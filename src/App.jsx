@@ -1,8 +1,14 @@
-import { useState, useRef } from 'react'
+import { useState, useRef ,useEffect} from 'react'
 import { marked } from 'marked'
 import './App.css'
+import { trackPageView } from './tracking.js'
 
 function App() {
+  useEffect(() => {
+    // Track page view after component mounts
+    trackPageView();
+  }, []);
+  
   const [markdownContent, setMarkdownContent] = useState('')
   const [fileName, setFileName] = useState('')
   const [showAllFiles, setShowAllFiles] = useState(false)
